@@ -1,0 +1,69 @@
+.scans-container {
+  padding: 30px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0077ff;
+}
+
+.scans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.scan-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.scan-card:hover {
+  transform: translateY(-5px);
+}
+
+.scan-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.scan-card p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 12px;
+  padding: 12px;
+  width: 100%;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fd1;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .scans-container {
+    padding: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .scans-grid {
+    grid-template-columns: 1fr;
+  }
+}
