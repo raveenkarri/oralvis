@@ -30,22 +30,21 @@ function App() {
 
   return (
     <Router>
-      <nav className="navbar">
-        <Link to="/">Home</Link>
-        {!role && (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-        {role && (
-          <>
-            {role === "Technician" && <Link to="/technician">Upload Scan</Link>}
-            {role === "Dentist" && <Link to="/dentist">View Scans</Link>}
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
-          </>
-        )}
-      </nav>
+   <nav className="navbar">
+  <Link to="/" className="logo">OralVis</Link>
+  <div className="nav-links">
+    {!role && (
+      <>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </>
+    )}
+    {role && (
+      <button className="logout-btn" onClick={handleLogout}>Logout</button>
+    )}
+  </div>
+</nav>
+
 
       <Routes>
         <Route path="/" element={<HomeRedirect />} />

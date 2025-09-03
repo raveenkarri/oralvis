@@ -27,7 +27,7 @@ export default function TechnicianPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(`http://localhost:4000/api/scans`, formData, {
+      const res = await axios.post(`https://oralvis-backend-jfma.onrender.com/api/scans`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -47,40 +47,47 @@ export default function TechnicianPage() {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Upload Scan</h2>
-        <input
-          type="text"
-          placeholder="Patient Name"
-          value={form.patientName}
-          onChange={(e) => setForm({ ...form, patientName: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Patient ID"
-          value={form.patientId}
-          onChange={(e) => setForm({ ...form, patientId: e.target.value })}
-          required
-        />
+    <div className="technician-page">
+      <div className="info-section">
+        <h1>Welcome to OralVis</h1>
+        <p>
+          OralVis is a state-of-the-art dental imaging platform designed to help technicians upload patient scans easily. 
+          Ensure accurate recording and quick access to dental images for analysis by dentists.  
+          Upload RGB scans of patient regions including Frontal, Upper Arch, and Lower Arch. 
+        </p>
+      </div>
 
-        <select value={form.scanType} onChange={(e) => setForm({ ...form, scanType: e.target.value })}>
-          <option value="RGB">RGB</option>
-        </select>
-
-        <select value={form.region} onChange={(e) => setForm({ ...form, region: e.target.value })}>
-          <option value="Frontal">Frontal</option>
-          <option value="Upper Arch">Upper Arch</option>
-          <option value="Lower Arch">Lower Arch</option>
-        </select>
-
-        <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Uploading..." : "Upload"}
-        </button>
-      </form>
+      <div className="form-section">
+        <form onSubmit={handleSubmit}>
+          <h2>Upload Scan</h2>
+          <input
+            type="text"
+            placeholder="Patient Name"
+            value={form.patientName}
+            onChange={(e) => setForm({ ...form, patientName: e.target.value })}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Patient ID"
+            value={form.patientId}
+            onChange={(e) => setForm({ ...form, patientId: e.target.value })}
+            required
+          />
+          <select value={form.scanType} onChange={(e) => setForm({ ...form, scanType: e.target.value })}>
+            <option value="RGB">RGB</option>
+          </select>
+          <select value={form.region} onChange={(e) => setForm({ ...form, region: e.target.value })}>
+            <option value="Frontal">Frontal</option>
+            <option value="Upper Arch">Upper Arch</option>
+            <option value="Lower Arch">Lower Arch</option>
+          </select>
+          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
+          <button type="submit" disabled={loading}>
+            {loading ? "Uploading..." : "Upload"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
